@@ -1,0 +1,19 @@
+`timescale 1ns / 1ps
+
+module mux_4x1_using_2x1_mux_tb();
+    reg [3:0]D;
+    reg[1:0]S;
+    wire Y;
+    //wire [1:0]A;
+    mux_4x1_using_2x1_mux uut(D,S,Y);
+    initial begin
+        S = 0;
+        D = 0;
+        #10 S = 2'b00;
+            D = 4'b1010;
+        #10 S = 2'b01;
+        #10 S = 2'b10;
+        #10 S = 2'b11;
+        #20 $finish;
+    end
+endmodule
