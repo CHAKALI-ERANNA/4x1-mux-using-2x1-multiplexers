@@ -1,0 +1,21 @@
+`timescale 1ns / 1ps
+
+module mux_4x1_using_2x1_mux(D,S,Y
+    );
+    input [3:0]D;
+    input [1:0]S;
+    output Y;
+    wire [1:0]A;
+    MUX_2x1 mux_1(D[1:0],A[0],S[0]);
+    MUX_2x1 mux_2(D[3:2],A[1],S[0]);
+    MUX_2x1 mux_3(A[1:0],Y,S[1]);   
+endmodule
+
+module MUX_2x1(I,Y,S
+
+    );
+    input [1:0]I;
+    input S;
+    output Y;
+    assign Y = (S == 0)?I[0]:I[1];
+endmodule
